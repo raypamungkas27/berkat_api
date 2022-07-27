@@ -63,7 +63,20 @@ class KategoriCT extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = Ms_kategori::find($id);
+
+        if ($model) {
+            return response()->json([
+                'message' => 'Success Get Data',
+                'data' => $model,
+                'status_code' => 200
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Get Data failed! Data Not Found',
+                'status_code' => 404
+            ], 404);
+        }
     }
 
     /**
